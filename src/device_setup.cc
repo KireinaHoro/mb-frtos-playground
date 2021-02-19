@@ -62,11 +62,6 @@ static int setup_gpio() {
 	return Status;
 }
 
-static int setup_timer() {
-	xil_printf("Timer support WIP.\r\n");
-	return XST_SUCCESS;
-}
-
 #define RUN_SETUP(x) { \
 	Status = setup_##x(); \
 	if (Status != XST_SUCCESS) \
@@ -78,7 +73,6 @@ int setup_devices() {
 	RUN_SETUP(cache)
 	RUN_SETUP(uart)
 	RUN_SETUP(gpio)
-	RUN_SETUP(timer)
 
 	return XST_SUCCESS;
 }
