@@ -8,6 +8,7 @@ XUartNs550 UartNs550;
 XGpio GpioLed;
 
 #define mainPRINT_TASK_PRIORITY (tskIDLE_PRIORITY + 1)
+#define mainBUTTON_TASK_PRIORITY (tskIDLE_PRIORITY + 1)
 #define mainLED_TASK_PRIORITY (tskIDLE_PRIORITY + 2)
 
 // override weak default in port_exceptions.c
@@ -47,6 +48,7 @@ int main() {
 
 	CREATE_TASK(PrintHello, PRINT)
 	CREATE_TASK(BlinkLed, LED)
+	CREATE_TASK_WITH_ARG(PushButton, BUTTON, &GpioLed)
 
 	if (ShellSpawn(&UartNs550) != pdPASS) {
 		return XST_FAILURE;

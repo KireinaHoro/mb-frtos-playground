@@ -47,7 +47,6 @@ static int setup_uart() {
 }
 
 static int setup_gpio() {
-
 	int Status;
 
 	// initialize GPIO
